@@ -7,50 +7,87 @@
   <title>Место Россия</title>
 </head>
 <body class="page">
-    <header class="header">
-      <div class="header__logo"></div>      
-    </header>
     
-    <main class="content">
-    <!--
-        <section class="profile">
-          <h1 class="lead__title">Путешествия по&nbsp;России</h1>
-          <p class="lead__subtitle">Настоящая страна не в выпусках новостей, а здесь.</p>
-          <img src="./images/lead-polka.jpg" alt="Романтика в поезде" class="lead__image">
-          <p class="lead__caption">ваша полка — верхняя</p>
-        </section>        
-    -->
-        <section class="elements">
-          <div class="element">
-            <img src="./images/element-karachaevsk.jpg" alt="Карачаевск" class="element__photo">
-            <p class="element__text">Карачаевск</p>
-          </div>
-          <div class="element">
-            <img src="./images/element-elbrus.jpg" alt="Эльбрус" class="element__photo">
-            <p class="element__text">Гора Эльбрус</p>
-          </div>
-          <div class="element">
-            <img src="./images/element-dombay.jpg" alt="Домбай" class="element__photo">
-            <p class="element__text">Домбай</p>
-          </div>
-          <div class="element">
-            <img src="./images/element-elbrus.jpg" alt="Эльбрус" class="element__photo">
-            <p class="element__text">Гора Эльбрус</p>        
-          </div>
-          <div class="element">
-            <img src="./images/element-dombay.jpg" alt="Домбай" class="element__photo">
-            <p class="element__text">Домбай</p>
-          </div>
-          <div class="element">
-            <img src="./images/element-karachaevsk.jpg" alt="Карачаевск" class="element__photo">
-            <p class="element__text">Карачаево-Черкесская Республика</p>
-          </div>          
-        </section>        
-         
-    </main>
+  <header class="header">
+    <div class="header__logo"></div>      
+  </header>
     
-    <footer class="footer">      
-      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
-    </footer>  
+  <main class="content">
+    
+    <section class="profile">
+      <div class="profile__avatar">
+        <img src="./images/profile-avatar.jpg" alt="Аватарка" class="profile__image">
+      </div>
+      <div class="profile-info">
+        <div class="profile-info__main-info">
+          <h1 class="profile-info__name">Жак-Ив Кусто</h1>
+          <button type="button" class="profile-info__edit-button"></button>
+        </div>
+        <p class="profile-info__description">Исследователь океана</p>            
+      </div>
+          <button type="button" class="profile__add-button"></button>
+    </section>        
+    
+    <section class="elements">
+      <div class="element">
+        <img src="./images/element-karachaevsk.jpg" alt="Карачаевск" class="element__photo">
+        <div class="element__description">
+          <h2 class="element__title">Карачаевск</h2>
+          <button type="button" class="element__like-button"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/element-elbrus.jpg" alt="Эльбрус" class="element__photo">
+        <div class="element__description">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button type="button" class="element__like-button"></button>
+        </div>
+          </div>
+      <div class="element">
+        <img src="./images/element-dombay.jpg" alt="Домбай" class="element__photo">
+        <div class="element__description">
+          <h2 class="element__title">Домбай</h2>
+          <button type="button" class="element__like-button"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/element-elbrus.jpg" alt="Эльбрус" class="element__photo">
+        <div class="element__description">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button type="button" class="element__like-button"></button>
+        </div>      
+      </div>
+      <div class="element">
+        <img src="./images/element-dombay.jpg" alt="Домбай" class="element__photo">
+        <div class="element__description">
+          <h2 class="element__title">Домбай</h2>
+          <button type="button" class="element__like-button"></button>
+        </div>
+      </div>
+      <div class="element">
+        <img src="./images/element-karachaevsk.jpg" alt="Карачаевск" class="element__photo">
+        <div class="element__description">
+          <h2 class="element__title">Карачаево-Черкесская Республика</h2>
+          <button type="button" class="element__like-button"></button>
+        </div>  
+      </div>          
+    </section>        
+        
+  </main>
+    
+  <footer class="footer">      
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+
+  <div class="popup">
+    <form class="popup__container">
+      <button type="button" class="popup__close"></button>
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <input type="text" class="popup__name" name="name" value="Жак-Ив Кусто">
+      <input type="text" class="popup__description" name="description" value="Исследователь океана">
+      <button type="submit" class="popup__save">Сохранить</button>
+    </form>
+  </div> 
+  <script src="./scripts/popup.js"></script>
 </body>
 </html>

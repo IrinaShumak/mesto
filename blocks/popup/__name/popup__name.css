@@ -1,0 +1,19 @@
+.popup__name {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+  min-width: 358px;
+  margin: 0 auto 30px auto;
+  box-sizing: border-box;
+}
+
+.popup__name:focus {
+  border: 2px solid rgb(56, 129, 231);
+  border-radius: 2px;
+}

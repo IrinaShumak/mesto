@@ -1,0 +1,26 @@
+.popup__save {
+  appearance: none;
+  border: 0;
+  box-sizing: border-box;
+  background-color: rgba(0,0,0,0);
+  background-image: url(../../../images/popup-save.svg);
+  min-height: 50px;
+  min-width: 358px;
+  margin: 0 auto 37px auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  opacity: 1;
+  transition: opacity linear 0.2s;
+}
+
+.popup__save:hover {
+  opacity: 0.8;
+}
