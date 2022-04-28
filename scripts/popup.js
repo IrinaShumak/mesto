@@ -35,7 +35,9 @@ function formSubmitHandler (evt) {
 
     // Вставьте новые значения с помощью textContent
     let profileName = document.querySelector('.profile-info__name');
+    let profileJob = document.querySelector('.profile-info__description');
     profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
     popup.classList.remove('popup_opened');
 }
 
