@@ -11,3 +11,17 @@
   max-width: 500px;
   margin: 0;
 }
+
+@media screen and (max-width: 880px) {
+  .profile-info__name {        
+    text-align: center;   
+  }
+}
+
+@media screen and (max-width: 565px) {
+  .profile-info__name {
+    font-size: 27px;
+    line-height: 33px;    
+    max-width: 189px;
+  }
+}
