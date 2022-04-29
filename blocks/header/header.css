@@ -1,10 +1,10 @@
-.header {  
-  box-sizing: border-box;  
+.header {
+  box-sizing: border-box;
   padding: 0;
   margin: 0 auto 40px auto;
   min-height: 74px;
   max-width: 880px;
-  border-bottom: 1px solid rgba(84,84,84,0.7);    
+  border-bottom: 1px solid rgba(84,84,84,0.7);
 }
 
 @media screen and (max-width: 880px) {
