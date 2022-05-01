@@ -5,7 +5,8 @@
   line-height: 29px;
   color: #000000;
   text-align: left;
-  margin: 34px 54px 64px 36px;
+  margin: 34px 54px 48px 36px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 565px) {
@@ -13,6 +14,6 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-    margin: 25px 22px 75px 22px;
+    margin: 25px 22px 75px 16px;
   }
 }

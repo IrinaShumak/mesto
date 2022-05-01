@@ -2,7 +2,7 @@
   appearance: none;
   border: 0;
   box-sizing: border-box;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0,0,0);
   background-image: url(../../../images/popup-save.svg);
   min-height: 50px;
   min-width: 358px;

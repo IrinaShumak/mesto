@@ -9,23 +9,15 @@ let jobInput = document.querySelector('.popup__description');
 let profileName = document.querySelector('.profile-info__name');
 let profileJob = document.querySelector('.profile-info__description');
 
-popupOpenBtn.addEventListener('click', function(event) {
-  popup.classList.add('popup_opened')
+function openPopup (event) {
+  popup.classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-});
+}
 
-popupCloseBtn.addEventListener('click', function(event) {
-  popup.classList.remove('popup_opened')
-});
-
-popup.addEventListener('click', function(event) {
-  if (event.target == event.currentTarget) {
-    popup.classList.remove('popup_opened');
-  }  
-});
-
-
+function closePopup (event) {
+  popup.classList.remove('popup_opened');
+}
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -42,8 +34,12 @@ function formSubmitHandler (evt) {
     
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    popup.classList.remove('popup_opened');
+    closePopup();
 }
+
+popupOpenBtn.addEventListener('click', openPopup);
+
+popupCloseBtn.addEventListener('click', closePopup);
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»

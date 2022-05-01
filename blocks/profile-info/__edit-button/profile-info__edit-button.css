@@ -1,5 +1,5 @@
 .profile-info__edit-button {
-    margin: 0;
+    margin: 10px 0 0 0;
     appearance: none;
     border: 0;
     background-color: rgba(0,0,0,0);
@@ -10,7 +10,7 @@
     background-repeat: no-repeat;
     background-position: center;
     opacity: 1;
-    transition: opacity linear 0.2s;
+    transition: opacity linear 0.2s;    
   }
   
 .profile-info__edit-button:hover {
@@ -21,5 +21,6 @@
   .profile-info__edit-button {
     min-height: 18px;
     min-width: 18px;
+    margin-top: 0px;
   }
 }

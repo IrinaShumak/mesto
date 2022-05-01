@@ -9,8 +9,9 @@
   line-height: 17px;
   color: #000000;
   min-width: 358px;
-  margin: 0 auto 48px auto;
+  margin: 0 auto 49px auto;
   box-sizing: border-box;
+  padding-bottom: 6px;
 }
 
 .popup__description:focus {
