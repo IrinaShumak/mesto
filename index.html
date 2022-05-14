@@ -26,84 +26,58 @@
         <p class="profile-info__description">Исследователь океана</p>            
       </div>
           <button type="button" class="profile__add-button"></button>
-    </section>        
-    
-    <section class="elements">
-      
-    </section>
+    </section>    
 
     <template id="element">
       <div class="element">
         <div class="element__inner">
           <img src="" alt="" class="element__photo">
-        </div>       
+        </div>
+        <button type="button" class="element__trash-button"></button>   
         <div class="element__description">
           <h2 class="element__title"></h2>
-          <button type="button" class="element__like-button"></button>
+          <button type="button" class="element__like-button"></button>          
         </div>
       </div>
     </template>
-    <!--
-    
-      <div class="element">
-        <img src="./images/element-karachaevsk.jpg" alt="Карачаевск" class="element__photo">
-        <div class="element__description">
-          <h2 class="element__title">Карачаевск</h2>
-          <button type="button" class="element__like-button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/element-elbrus.jpg" alt="Эльбрус" class="element__photo">
-        <div class="element__description">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" class="element__like-button"></button>
-        </div>
-          </div>
-      <div class="element">
-        <img src="./images/element-dombay.jpg" alt="Домбай" class="element__photo">
-        <div class="element__description">
-          <h2 class="element__title">Домбай</h2>
-          <button type="button" class="element__like-button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/element-elbrus.jpg" alt="Эльбрус" class="element__photo">
-        <div class="element__description">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" class="element__like-button"></button>
-        </div>      
-      </div>
-      <div class="element">
-        <img src="./images/element-dombay.jpg" alt="Домбай" class="element__photo">
-        <div class="element__description">
-          <h2 class="element__title">Домбай</h2>
-          <button type="button" class="element__like-button"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/element-karachaevsk.jpg" alt="Карачаевск" class="element__photo">
-        <div class="element__description">
-          <h2 class="element__title">Карачаево-Черкесская Республика</h2>
-          <button type="button" class="element__like-button"></button>
-        </div>  
-      </div>          
-            
-   -->     
+
+    <section class="elements">
+      
+    </section>  
   </main>
     
   <footer class="footer">      
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 
-  <div class="popup">
-    <form class="popup__container" action="#" method="post" name="data_for_profile">
-      <button type="button" class="popup__close"></button>
+  <div class="popup popup_location_photo">
+    <form class="popup__container popup__container_location_photo" action="#" method="post" name="data_for_photo-gallery">
+      <button type="button" class="popup__close popup__close_location_photo"></button>
+      <h3 class="popup__title">Новое место</h3>
+      <input type="text" class="popup__place" name="place" placeholder="Название">
+      <input type="text" class="popup__link" name="link" placeholder="Ссылка на картинку">
+      <button type="submit" class="popup__save">Создать</button>
+    </form>
+  </div> 
+
+  <div class="popup popup_location_profile">
+    <form class="popup__container popup__container_location_profile" action="#" method="post" name="data_for_profile">
+      <button type="button" class="popup__close popup__close_location_profile"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <input type="text" class="popup__name" name="name" value="Жак-Ив Кусто">
       <input type="text" class="popup__description" name="description" value="Исследователь океана">
       <button type="submit" class="popup__save">Сохранить</button>
     </form>
-  </div> 
+  </div>
+
+  <div class="popup popup_location_element">
+    <div class="popup__content">
+      <button type="button" class="popup__close popup__close_location_element"></button>    
+      <img src="" alt="" class="popup__photo">
+      <h2 class="popup__image-heading"></h2>
+    </div> 
+  </div>
+
   <script src="./scripts/index.js"></script>
 </body>
 </html>

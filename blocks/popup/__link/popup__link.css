@@ -1,4 +1,4 @@
-.popup__description {
+.popup__link {
   outline: none;
   border: none;
   border-bottom: 1px solid rgba(0,0,0,0.2);
@@ -7,21 +7,22 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
-  color: #000000;
+  color: #C4C4C4;
   min-width: 358px;
   margin: 0 auto 49px auto;
   box-sizing: border-box;
-  padding-bottom: 8px;
-}
-
-.popup__description:focus {
+  padding-bottom: 7px;
+  }
+  
+.popup__link:focus {
   border: 2px solid rgb(56, 129, 231);
   border-radius: 2px;
 }
-
+  
 @media screen and (max-width: 565px) {
-  .popup__description {
+  .popup__link {
     min-width: 238px;
     margin-bottom: 45px;
   }
 }
+
