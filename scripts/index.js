@@ -107,7 +107,7 @@ function handleProfileFormSubmit (evt) {
 
 function handlePhotoFormSubmit (evt) {
   evt.preventDefault();
-  let item = {name: placeInput.value, link: linkInput.value};  
+  const item = {name: placeInput.value, link: linkInput.value};  
   cardsOnline.prepend(createCard(item));
   closePopup(popupPhoto);
   evt.target.reset();
