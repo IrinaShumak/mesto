@@ -4,13 +4,13 @@
   font-size: 12px;
   line-height: 15px;
   color: #FF0000;
-  text-align: left;  
+  text-align: left;
   width: 358px;
   display: none;
-  margin: 5px auto 0 auto;  
+  margin: 5px auto 0 auto;
 }
 
 @media screen and (max-width: 565px) {
   .popup__error {
-    width: 238px;    
+    width: 238px;  
 }}
