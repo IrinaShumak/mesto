@@ -39,15 +39,15 @@ const fullSizeHeading = document.querySelector('.popup__image-heading');
 
 const closeButtons = document.querySelectorAll('.popup__close');
 
-const profileForm = document.querySelector('.popup__container_location_profile');
-const formPhoto = document.querySelector('.popup__container_location_photo');
+const profileForm = document.querySelector('.popup__form_location_profile');
+const formPhoto = document.querySelector('.popup__form_location_photo');
 
-const nameInput = document.querySelector('.popup__name');
-const jobInput = document.querySelector('.popup__description');
+const nameInput = document.querySelector('.popup__input_field_name');
+const jobInput = document.querySelector('.popup__input_field_description');
 const profileName = document.querySelector('.profile-info__name');
 const profileJob = document.querySelector('.profile-info__description');
-const placeInput = document.querySelector('.popup__place');
-const linkInput = document.querySelector('.popup__link');
+const placeInput = document.querySelector('.popup__input_field_place');
+const linkInput = document.querySelector('.popup__input_field_link');
 
 const cardsTemplate = document.querySelector('#element').content;
 const cardsOnline = document.querySelector('.elements');
@@ -56,8 +56,14 @@ function openPopup (popup) {
   popup.classList.add('popup_opened');  
 }
 
-function closePopup (popup) {
+function closePopup (popup) {  
   popup.classList.remove('popup_opened');
+}
+
+function closePopupEsc (event) {
+  if (event.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);}
 }
 
 function like (likeBtn) {
@@ -88,6 +94,7 @@ function createCard (item) {
   //open Full size photo 
   cardImage.addEventListener('click', function(event){
     openPopup(popupFullSize);
+    document.addEventListener('keydown', closePopupEsc);
     fullSizePhoto.src = item.link;  
     fullSizePhoto.alt = item.name;
     fullSizeHeading.textContent = item.name;
@@ -115,18 +122,24 @@ function handlePhotoFormSubmit (evt) {
 
 profileOpenBtn.addEventListener('click', function(event){
   openPopup(popupProfile);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
+  document.addEventListener('keydown', closePopupEsc); 
   });
 
 popupAddBtn.addEventListener('click', function(event){
-  openPopup(popupPhoto);  
+  openPopup(popupPhoto);
+  document.addEventListener('keydown', closePopupEsc);
   });
 
 closeButtons.forEach((button) => {   
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
+  const popup = button.closest('.popup');  
+  popup.addEventListener('click', function (event) {    
+    if (event.target == event.currentTarget || event.target == button) {
+      closePopup(popup);
+      document.removeEventListener('keydown', closePopupEsc);   
+    }});  
 });
+
+
 
 // Attach submitter functions to the forms
 profileForm.addEventListener('submit', handleProfileFormSubmit);

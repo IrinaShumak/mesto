@@ -51,33 +51,38 @@
   </footer>
 
   <div class="popup popup_location_photo">
-    <form class="popup__container popup__container_location_photo" action="#" method="post" name="data_for_photo-gallery">
-      <button type="button" class="popup__close popup__close_location_photo"></button>
+    <form class="popup__form popup__form_location_photo" action="#" method="post" name="data_for_photo-gallery">
+      <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Новое место</h3>
-      <input type="text" class="popup__place" name="place" placeholder="Название">
-      <input type="text" class="popup__link" name="link" placeholder="Ссылка на картинку">
-      <button type="submit" class="popup__save">Создать</button>
+      <input id="place-input" type="text" class="popup__input popup__input_field_place" name="place" placeholder="Название" required minlength="2" maxlength="30">
+      <span class="place-input-error popup__error"></span>
+      <input id="url-input" type="url" class="popup__input popup__input_field_link" name="link" placeholder="Ссылка на картинку" required>
+      <span class="url-input-error popup__error"></span>
+      <button type="submit" class="popup__button">Создать</button>
     </form>
   </div> 
 
   <div class="popup popup_location_profile">
-    <form class="popup__container popup__container_location_profile" action="#" method="post" name="data_for_profile">
-      <button type="button" class="popup__close popup__close_location_profile"></button>
+    <form class="popup__form popup__form_location_profile" action="#" method="post" name="data_for_profile">
+      <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <input type="text" class="popup__name" name="name" value="Жак-Ив Кусто">
-      <input type="text" class="popup__description" name="description" value="Исследователь океана">
-      <button type="submit" class="popup__save">Сохранить</button>
+      <input id="name-input" type="text" class="popup__input popup__input_field_name" name="name" value="Жак-Ив Кусто" required minlength="2" maxlength="40">
+      <span class="name-input-error popup__error"></span>
+      <input id="description-input" type="text" class="popup__input popup__input_field_description" name="description" value="Исследователь океана" required minlength="2" maxlength="200">
+      <span class="description-input-error popup__error"></span>
+      <button type="submit" class="popup__button">Сохранить</button>
     </form>
   </div>
 
   <div class="popup popup_location_element">
     <div class="popup__content">
-      <button type="button" class="popup__close popup__close_location_element"></button>    
+      <button type="button" class="popup__close"></button>    
       <img src="#" alt="" class="popup__photo">
       <h2 class="popup__image-heading"></h2>
     </div> 
   </div>
 
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 </html>
