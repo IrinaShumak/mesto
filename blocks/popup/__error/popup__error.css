@@ -7,10 +7,15 @@
   text-align: left;
   width: 358px;
   display: none;
-  margin: 5px auto 0 auto;
+  position: absolute;
+  top: 143px;
+  left: 36px;
+  margin: 0;
 }
 
 @media screen and (max-width: 565px) {
   .popup__error {
-    width: 238px;  
+    width: 238px;
+    top: 154px;
+    left: 22px;
 }}

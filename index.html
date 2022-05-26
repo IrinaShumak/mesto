@@ -51,25 +51,25 @@
   </footer>
 
   <div class="popup popup_location_photo">
-    <form class="popup__form popup__form_location_photo" action="#" method="post" name="data_for_photo-gallery">
+    <form class="popup__form popup__form_location_photo" action="#" method="post" name="data_for_photo-gallery" novalidate>
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Новое место</h3>
       <input id="place-input" type="text" class="popup__input popup__input_field_place" name="place" placeholder="Название" required minlength="2" maxlength="30">
       <span class="place-input-error popup__error"></span>
       <input id="url-input" type="url" class="popup__input popup__input_field_link" name="link" placeholder="Ссылка на картинку" required>
-      <span class="url-input-error popup__error"></span>
-      <button type="submit" class="popup__button">Создать</button>
+      <span class="url-input-error popup__error popup__error_bottom"></span>
+      <button type="submit" class="popup__button" disabled>Создать</button>
     </form>
   </div> 
 
   <div class="popup popup_location_profile">
-    <form class="popup__form popup__form_location_profile" action="#" method="post" name="data_for_profile">
+    <form class="popup__form popup__form_location_profile" action="#" method="post" name="data_for_profile" novalidate>
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <input id="name-input" type="text" class="popup__input popup__input_field_name" name="name" value="Жак-Ив Кусто" required minlength="2" maxlength="40">
       <span class="name-input-error popup__error"></span>
       <input id="description-input" type="text" class="popup__input popup__input_field_description" name="description" value="Исследователь океана" required minlength="2" maxlength="200">
-      <span class="description-input-error popup__error"></span>
+      <span class="description-input-error popup__error popup__error_bottom"></span>
       <button type="submit" class="popup__button">Сохранить</button>
     </form>
   </div>

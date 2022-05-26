@@ -38,6 +38,7 @@ const fullSizePhoto = document.querySelector('.popup__photo');
 const fullSizeHeading = document.querySelector('.popup__image-heading');
 
 const closeButtons = document.querySelectorAll('.popup__close');
+const popups = document.querySelectorAll('.popup');
 
 const profileForm = document.querySelector('.popup__form_location_profile');
 const formPhoto = document.querySelector('.popup__form_location_photo');
@@ -53,11 +54,14 @@ const cardsTemplate = document.querySelector('#element').content;
 const cardsOnline = document.querySelector('.elements');
 
 function openPopup (popup) {
-  popup.classList.add('popup_opened');  
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+  enableValidation(selectors);
 }
 
 function closePopup (popup) {  
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
 }
 
 function closePopupEsc (event) {
@@ -93,8 +97,7 @@ function createCard (item) {
     deleteCard(trashBtn, item)});
   //open Full size photo 
   cardImage.addEventListener('click', function(event){
-    openPopup(popupFullSize);
-    document.addEventListener('keydown', closePopupEsc);
+    openPopup(popupFullSize);    
     fullSizePhoto.src = item.link;  
     fullSizePhoto.alt = item.name;
     fullSizeHeading.textContent = item.name;
@@ -117,26 +120,23 @@ function handlePhotoFormSubmit (evt) {
   const item = {name: placeInput.value, link: linkInput.value};  
   cardsOnline.prepend(createCard(item));
   closePopup(popupPhoto);
-  evt.target.reset();
+  evt.target.reset();  
 }
 
 profileOpenBtn.addEventListener('click', function(event){
-  openPopup(popupProfile);
-  document.addEventListener('keydown', closePopupEsc); 
+  openPopup(popupProfile);  
   });
 
 popupAddBtn.addEventListener('click', function(event){
-  openPopup(popupPhoto);
-  document.addEventListener('keydown', closePopupEsc);
+  openPopup(popupPhoto);  
   });
 
-closeButtons.forEach((button) => {   
-  const popup = button.closest('.popup');  
+popups.forEach((popup) => {
+  const closeButton = popup.querySelector('.popup__close');
   popup.addEventListener('click', function (event) {    
-    if (event.target == event.currentTarget || event.target == button) {
-      closePopup(popup);
-      document.removeEventListener('keydown', closePopupEsc);   
-    }});  
+    if (event.target == event.currentTarget || event.target == closeButton) {
+      closePopup(popup);     
+    }});
 });
 
 
