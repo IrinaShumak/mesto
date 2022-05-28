@@ -14,11 +14,6 @@
   padding-bottom: 8px;
 }
 
-.popup__input:focus {
-  border: 2px solid rgb(56, 129, 231);
-  border-radius: 2px;
-}
-
 @media screen and (max-width: 565px) {
   .popup__input {
     min-width: 238px;    

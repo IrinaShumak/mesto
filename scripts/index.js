@@ -30,7 +30,8 @@ const popupProfile = document.querySelector('.popup_location_profile');
 
 
 const popupPhoto = document.querySelector('.popup_location_photo');
-const popupAddBtn = document.querySelector('.profile__add-button')
+const popupAddBtn = document.querySelector('.profile__add-button');
+
 
 
 const popupFullSize = document.querySelector('.popup_location_element');
@@ -56,7 +57,7 @@ const cardsOnline = document.querySelector('.elements');
 function openPopup (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupEsc);
-  enableValidation(selectors);
+  
 }
 
 function closePopup (popup) {  
@@ -68,6 +69,16 @@ function closePopupEsc (event) {
   if (event.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
     closePopup(popup);}
+}
+
+function diasbleSaveButton (button) {
+  button.classList.add(`${selectors.inactiveButtonClass}`);
+  button.setAttribute("disabled", true);
+}
+
+function enasbleSaveButton (button) {
+  button.classList.remove(`${selectors.inactiveButtonClass}`);
+  button.removeAttribute('disabled');
 }
 
 function like (likeBtn) {
@@ -120,7 +131,9 @@ function handlePhotoFormSubmit (evt) {
   const item = {name: placeInput.value, link: linkInput.value};  
   cardsOnline.prepend(createCard(item));
   closePopup(popupPhoto);
-  evt.target.reset();  
+  evt.target.reset();
+  const buttonPhotoFormSubmit = evt.target.querySelector(`${selectors.submitButtonSelector}`);
+  diasbleSaveButton(buttonPhotoFormSubmit);
 }
 
 profileOpenBtn.addEventListener('click', function(event){
@@ -128,13 +141,12 @@ profileOpenBtn.addEventListener('click', function(event){
   });
 
 popupAddBtn.addEventListener('click', function(event){
-  openPopup(popupPhoto);  
+  openPopup(popupPhoto);
   });
 
-popups.forEach((popup) => {
-  const closeButton = popup.querySelector('.popup__close');
+popups.forEach((popup) => {  
   popup.addEventListener('click', function (event) {    
-    if (event.target == event.currentTarget || event.target == closeButton) {
+    if (event.target == event.currentTarget || event.target.classList.contains('popup__close')) {
       closePopup(popup);     
     }});
 });

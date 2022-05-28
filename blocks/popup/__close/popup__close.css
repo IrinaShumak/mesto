@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
+  cursor: pointer;
   top: -40px;
   right: -40px;
   opacity: 1;

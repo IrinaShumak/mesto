@@ -17,6 +17,7 @@
   line-height: 22px;
   text-align: center;
   color: #FFFFFF;
+  cursor: pointer;
   opacity: 1;
   transition: opacity linear 0.2s;
 }
