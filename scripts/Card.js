@@ -1,11 +1,12 @@
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, openPopup) {
     this._cardImageLink = data.link;
     this._cardText = data.name;
     this._cardSelector = cardSelector;
     this._popupFullSize = document.querySelector('.popup_location_element');
     this._fullSizePhoto = document.querySelector('.popup__photo');
-    this._fullSizeHeading = document.querySelector('.popup__image-heading');      
+    this._fullSizeHeading = document.querySelector('.popup__image-heading');
+    this._openPopup = openPopup;      
   }
 
   _getTemplate() {
@@ -39,23 +40,15 @@ export class Card {
   }
 
   _deleteCard () {
-    this._trashBtn.closest('.element').remove();        
-  }  
-  
-  _closePopupEsc (event) {
-    if (event.key === 'Escape') {
-      this._popupOpened = document.querySelector('.popup_opened');      
-      this._popupOpened.classList.remove('popup_opened');
-      document.removeEventListener('keydown', this._closePopupEsc);
-    }
-  }
+    this._element.remove();
+    this._element = null;      
+  }   
 
   _openFull (){
     this._fullSizePhoto.src = this._cardImageLink;  
     this._fullSizePhoto.alt = this._cardText;
     this._fullSizeHeading.textContent = this._cardText;
-    this._popupFullSize.classList.add('popup_opened');    
-    document.addEventListener('keydown', this._closePopupEsc);
+    this._openPopup(this._popupFullSize);    
   }
   
 

@@ -1,29 +1,7 @@
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
+import {initialCards} from './Input.js';
+
 
 const selectors = {
   formSelector: '.popup__form',
@@ -32,9 +10,6 @@ const selectors = {
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'};
-
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
 
 const formList = Array.from(document.querySelectorAll(`${selectors.formSelector}`));  
 
@@ -77,11 +52,6 @@ function closePopupEsc (event) {
   }
 }
 
-function diasbleSaveButton (button) {
-  button.classList.add(`${selectors.inactiveButtonClass}`);
-  button.setAttribute("disabled", true);
-}
-
 // Form submitter for editing profile
 function handleProfileFormSubmit (evt) {
     evt.preventDefault(); // Prevent standard form submission
@@ -91,16 +61,19 @@ function handleProfileFormSubmit (evt) {
     closePopup(popupProfile);
 }
 
+function createNewCard (item) {
+  const card = new Card(item, '#element', openPopup);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
 function handlePhotoFormSubmit (evt) {
   evt.preventDefault();
-  const item = {name: placeInput.value, link: linkInput.value};
-  const card = new Card(item, '#element');
-  const cardElement = card.generateCard();
-  cardsOnline.prepend(cardElement);
+  const item = {name: placeInput.value, link: linkInput.value};  
+  cardsOnline.prepend(createNewCard (item));
   closePopup(popupPhoto);
   evt.target.reset();
-  const buttonPhotoFormSubmit = evt.target.querySelector(`${selectors.submitButtonSelector}`);
-  diasbleSaveButton(buttonPhotoFormSubmit);
+  const buttonPhotoFormSubmit = evt.target.querySelector(`${selectors.submitButtonSelector}`);  
 }
 
 
@@ -124,11 +97,9 @@ profileForm.addEventListener('submit', handleProfileFormSubmit);
 formPhoto.addEventListener('submit', handlePhotoFormSubmit);
  
 initialCards.forEach((item) => {  
-  const card = new Card(item, '#element');
-  const cardElement = card.generateCard();
-  cardsOnline.append(cardElement);
+  cardsOnline.append(createNewCard (item)); 
 });
-
+ 
 formList.forEach((formElement) => {     
   const formValidator = new FormValidator(selectors, formElement);
   formValidator.enableValidation();
