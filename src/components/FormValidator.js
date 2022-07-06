@@ -70,5 +70,12 @@ export class FormValidator {
           this._diasbleSaveButton();
         });        
         this._setEventListeners();        
-    };     
+    };
+    
+    resetValidation() {
+      this._inputList.forEach((inputElement) => {    
+          this._checkInputValidity(inputElement);
+          this._toggleButtonState();
+      }); 
+    }
 };
