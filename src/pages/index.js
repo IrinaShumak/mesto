@@ -11,11 +11,11 @@ import {
   linkInput, 
   nameInput, 
   jobInput
-} from '../components/Input.js';
+} from '../utils/input.js';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithImage from '../components/PicturePopup.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 
 
 const userInfo = new UserInfo({
@@ -26,8 +26,8 @@ const userInfo = new UserInfo({
 const profileForm = new PopupWithForm(  
   '.popup_location_profile',
   '.popup__form_location_profile',  
-  (evt) => { 
-    userInfo.setUserInfo(profileForm._getInputValues());    
+  ({fullname, description}) => { 
+    userInfo.setUserInfo({fullname, description});    
   });
 profileForm.setEventListeners();  
   
@@ -52,8 +52,8 @@ cardSelector);
 const photoForm = new PopupWithForm(  
   '.popup_location_photo',
   '.popup__form_location_photo',  
-  (evt) => { 
-    cardsOnline.addNewItem(createNewCard ({name: placeInput.value, link: linkInput.value}));
+  ({name, link}) => { 
+    cardsOnline.addNewItem(createNewCard ({name, link}));
   })
 photoForm.setEventListeners();
 
