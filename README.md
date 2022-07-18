@@ -21,4 +21,4 @@
 
 **Где найти проект**
 
-* [Ссылка на GitHub Pages](https://irinashumak.github.io/mesto/index.html)
+* [Ссылка на GitHub Pages](https://irinashumak.github.io/mesto/)

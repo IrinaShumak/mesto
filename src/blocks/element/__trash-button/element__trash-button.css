@@ -1,7 +1,7 @@
 .element__trash-button {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 18px;
+  right: 15px;
   appearance: none;
   border: 0;
   background-color: rgba(0,0,0,0);
