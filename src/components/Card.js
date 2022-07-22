@@ -12,7 +12,7 @@ export class Card {
     this._handleLikeClick = handleLikeClick;
     this.deleteCard = this.deleteCard.bind(this);  
   }
-
+ 
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
@@ -43,7 +43,7 @@ export class Card {
     this._likeCounter.textContent = cardInfo.likes.length;    
   }
 
-  makeLikeActive (cardInfo) {
+  makeLikeActive (cardInfo) {    
     if (cardInfo.likes.some(like => like._id == this._userId)) {this._likeBtn.classList.add('element__like-button_active')};
   } 
 

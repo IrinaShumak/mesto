@@ -5,6 +5,7 @@ export default class PopupWithConfirmation extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._handleSubmit = this._handleSubmit.bind(this);  
     this._form = this._popup.querySelector(formSelector);
+    this.closePopup = this.closePopup.bind(this);
   }
 
   openPopup (delteCardCallBack, chosenCardId) {
@@ -15,8 +16,7 @@ export default class PopupWithConfirmation extends Popup {
   
   _handleSubmit = (evt) => {
     evt.preventDefault();    
-    this._handleFormSubmit(this._delteCardCallBack, this._id);    
-    this.closePopup();
+    this._handleFormSubmit(this._delteCardCallBack, this._id, this.closePopup);    
   }
   
   setEventListeners () {

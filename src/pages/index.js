@@ -18,8 +18,6 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import Api from '../components/Api.js';
 
-const userID = 'a0200cfcf07ddbfcdde7f472';
-
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
   headers: {
@@ -34,8 +32,6 @@ const userInfo = new UserInfo({
   avatarSelector: '.profile__image'
 });
 
-
-
 api.takeUserInfo()
 .then((data) => {  
   userInfo.getUserInfoFromServer(data);  
@@ -48,10 +44,11 @@ const profileForm = new PopupWithForm(
   '.popup_location_profile',
   '.popup__form_location_profile',
   selectors,  
-  ({fullname, description}) => {    
+  ({fullname, description}, closeForm) => {    
     api.updateProfileInfo({fullname, description})
     .then((data) => {      
       userInfo.setUserInfo(data);
+      closeForm();
     })
     .catch((err) => {
       console.log('Ошибка. Запрос не выполнен: ', err); 
@@ -66,10 +63,11 @@ const avatarForm = new PopupWithForm(
   '.popup_location_avatar',
   '.popup__form_location_avatar',
   selectors, 
-  ({avatar}) => {    
+  ({avatar}, closeForm) => {    
     api.updateAvatar({avatar})
     .then((data) => {      
       userInfo.setUserAvatar(data);
+      closeForm();
     })
     .catch((err) => {
       console.log('Ошибка. Запрос не выполнен: ', err); 
@@ -83,10 +81,11 @@ const avatarForm = new PopupWithForm(
 const popupWithImage = new PopupWithImage('.popup_location_element');
 popupWithImage.setEventListeners();
 
-function deleteCardByClick (delteCardCallBack, id) {   
+function deleteCardByClick (delteCardCallBack, id, closeConfirmation) {   
     api.deleteCard(id)
       .then(() => {
         delteCardCallBack();
+        closeConfirmation();
       })
       .catch((err) => {
        console.log('Ошибка. Запрос не выполнен: ', err); 
@@ -120,7 +119,7 @@ function createNewCard (item) {
           console.log('Ошибка. Запрос не выполнен: ', err); 
         })
     },
-    userInfo.getUserInfo()
+    userInfo.getUserInfo() 
     );    
   const cardElement = card.generateCard();
   card.countLikes(item);
@@ -149,10 +148,11 @@ const photoForm = new PopupWithForm(
   '.popup_location_photo',
   '.popup__form_location_photo',
   selectors,  
-  ({name, link}) => {
+  ({name, link}, closePhoto) => {
     api.addNewCards({name, link})
     .then((data) => {      
       cardsOnline.addNewItem(createNewCard (data));
+      closePhoto();
     })
     .catch((err) => {
       console.log('Ошибка. Запрос не выполнен: ', err); 

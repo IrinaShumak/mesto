@@ -1,28 +1,32 @@
 export default class Api {
   constructor(options) {
     this._options = options;
+    this._url = options.baseUrl;//https://mesto.nomoreparties.co/v1/cohort-45
+    this._token = options.headers.authorization;
   }
 
+  _getResponseData (res) {
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(`Что-то пошло не так: ${res.status}`);
+}
+
   getInitialCards() {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-45/cards', {
+    return fetch(`${this._url}/cards`, {
       headers: {
-        authorization: '004567af-e6a2-4c65-9d5d-001e22f88e2a'
+        authorization: `${this._token}`
       }
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-  
-        return Promise.reject(`Ошибка: ${res.status}`);
-      });
+      .then(this._getResponseData);
   }
 
   addNewCards ({name, link}) {
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-45/cards', {
+    return fetch(`${this._url}/cards`, {
     method: 'POST',
     headers: {
-      authorization: '004567af-e6a2-4c65-9d5d-001e22f88e2a',
+      authorization: `${this._token}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
@@ -30,19 +34,14 @@ export default class Api {
       link
     })
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    })
+    .then(this._getResponseData)
   }
 
   updateProfileInfo ({fullname, description}) { 
-  return fetch('https://mesto.nomoreparties.co/v1/cohort-45/users/me', {
+  return fetch(`${this._url}/users/me`, {
     method: 'PATCH',
     headers: {
-      authorization: '004567af-e6a2-4c65-9d5d-001e22f88e2a',
+      authorization: `${this._token}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
@@ -50,73 +49,48 @@ export default class Api {
       about: description
     })
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    })
+    .then(this._getResponseData)
  }
  
  updateAvatar ({avatar}) {
-  return fetch('https://mesto.nomoreparties.co/v1/cohort-45/users/me/avatar', {
+  return fetch(`${this._url}/users/me/avatar`, {
     method: 'PATCH',
     headers: {
-      authorization: '004567af-e6a2-4c65-9d5d-001e22f88e2a',
+      authorization: `${this._token}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({avatar})
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    })
+    .then(this._getResponseData)
  }
 
  takeUserInfo () {
-   return fetch('https://nomoreparties.co/v1/cohort-45/users/me', {
+   return fetch(`${this._url}/users/me`, {
     headers: {
-      authorization: '004567af-e6a2-4c65-9d5d-001e22f88e2a'
+      authorization: `${this._token}`
     } 
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    }) 
+    .then(this._getResponseData)
 }
 
 likePhoto (id, method) {
-  return fetch(`https://mesto.nomoreparties.co/v1/cohort-45/cards/${id}/likes`, {
+  return fetch(`${this._url}/cards/${id}/likes`, {
     method: `${method}`,
     headers: {
-      authorization: '004567af-e6a2-4c65-9d5d-001e22f88e2a'      
+      authorization: `${this._token}`      
     }
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    })
+    .then(this._getResponseData)
 }
 
 deleteCard(id) {
-  return fetch(`https://mesto.nomoreparties.co/v1/cohort-45/cards/${id}`, {
+  return fetch(`${this._url}/cards/${id}`, {
     method: 'DELETE',
     headers: {
-      authorization: '004567af-e6a2-4c65-9d5d-001e22f88e2a'      
+      authorization: `${this._token}`      
     }
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    })
+    .then(this._getResponseData)
 }
 
 }
