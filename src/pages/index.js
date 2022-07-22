@@ -15,9 +15,10 @@ import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithDeletion from '../components/PopupWithDeletion.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import Api from '../components/Api.js';
 
+const userID = 'a0200cfcf07ddbfcdde7f472';
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-45',
@@ -33,14 +34,15 @@ const userInfo = new UserInfo({
   avatarSelector: '.profile__image'
 });
 
+
+
 api.takeUserInfo()
 .then((data) => {  
   userInfo.getUserInfoFromServer(data);  
 })
 .catch((err) => {
   console.log('Ошибка. Запрос не выполнен: ', err);
-});    
-
+});
 
 const profileForm = new PopupWithForm(  
   '.popup_location_profile',
@@ -81,22 +83,49 @@ const avatarForm = new PopupWithForm(
 const popupWithImage = new PopupWithImage('.popup_location_element');
 popupWithImage.setEventListeners();
 
-const deletionPopup = new PopupWithDeletion(
+function deleteCardByClick (delteCardCallBack, id) {   
+    api.deleteCard(id)
+      .then(() => {
+        delteCardCallBack();
+      })
+      .catch((err) => {
+       console.log('Ошибка. Запрос не выполнен: ', err); 
+      }) 
+}
+
+const deletionPopup = new PopupWithConfirmation(
   '.popup_location_trash',
-  '.popup__form_location_trash',  
-  ({_id}) => {
-    //api.deleteCard({_id})
-    // .then((data) => {
-      
-      
-     //})
-    
-  })
+  '.popup__form_location_trash',
+  deleteCardByClick,  
+  )
 deletionPopup.setEventListeners();
 
-function createNewCard (item) {
-  const card = new Card(item, '#element', popupWithImage.openPopup.bind(popupWithImage), deletionPopup.openPopup.bind(deletionPopup));
+function confirmDeleteCardByClick (delteCardCallBack, chosenCardId) {
+  deletionPopup.openPopup(delteCardCallBack, chosenCardId);
+}
+
+function createNewCard (item) {  
+  const card = new Card(
+    item, 
+    '#element',
+    popupWithImage.openPopup.bind(popupWithImage),
+    confirmDeleteCardByClick,    
+    (id, method) => {
+      api.likePhoto(id, method)
+        .then((data) => {               
+          card.like();
+          card.countLikes(data);
+        })
+        .catch((err) => {
+          console.log('Ошибка. Запрос не выполнен: ', err); 
+        })
+    },
+    userInfo.getUserInfo()
+    );    
   const cardElement = card.generateCard();
+  card.countLikes(item);
+  card.makeLikeActive(item);
+  card.removeTrashBtn(item);
   return cardElement;
 }
 

@@ -89,5 +89,34 @@ export default class Api {
     }) 
 }
 
+likePhoto (id, method) {
+  return fetch(`https://mesto.nomoreparties.co/v1/cohort-45/cards/${id}/likes`, {
+    method: `${method}`,
+    headers: {
+      authorization: '004567af-e6a2-4c65-9d5d-001e22f88e2a'      
+    }
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    })
+}
+
+deleteCard(id) {
+  return fetch(`https://mesto.nomoreparties.co/v1/cohort-45/cards/${id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: '004567af-e6a2-4c65-9d5d-001e22f88e2a'      
+    }
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    })
+}
 
 }

@@ -7,20 +7,27 @@ export default class UserInfo {
 
   setUserInfo ({name, about}) {
     this._profileName.textContent = name;
-    this._profileJob.textContent = about;    
+    this._profileJob.textContent = about;   
   }
 
   setUserAvatar ({avatar}) {
     this._profileAvatar.src = avatar;
   }
+
+  setUserId ({_id}) {
+    this._id = _id;
+  }
   
-  getUserInfoFromServer ({name, about, avatar}) {    
+  getUserInfoFromServer ({name, about, avatar, _id}) {    
     this.setUserInfo ({name, about});
-    this.setUserAvatar ({avatar});    
+    this.setUserAvatar ({avatar});
+    this.setUserId ({_id});
+    //console.log(this._id);   
   }
 
     getUserInfo () {    
-      const userData = {profileName: this._profileName.textContent, profileJob: this._profileJob.textContent, profileAvatar: this._profileAvatar.src};
+      const userData = {profileName: this._profileName.textContent, profileJob: this._profileJob.textContent, profileAvatar: this._profileAvatar.src, id: this._id};
+      //console.log(userData)
       return userData;
     }
   }
